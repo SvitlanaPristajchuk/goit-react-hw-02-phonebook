@@ -16,7 +16,7 @@ class ContactItem extends Component {
           <button
             className={s.button}
             type="button"
-            onClick={() =>  deleteContact(contact.id)} // Метод на клике, принимает ID контакта
+            onClick={() =>  deleteContact(contact.id)}
           >
             Delete
           </button>
