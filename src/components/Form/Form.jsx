@@ -5,12 +5,12 @@ import PropTypes from "prop-types";
 
 class Form extends Component {
   state = {
-    inputName: "",
+    name: "",
     number: "",
   };
 
   handleInputChange = (e) => {
-    this.setState({ inputName: e.currentTarget.value });
+    this.setState({ name: e.currentTarget.value });
   };
 
   handleInputChangeNumber = (e) => {
@@ -24,7 +24,7 @@ class Form extends Component {
     e.preventDefault();
     const contact = {
       id: nanoid(),
-      name: this.state.inputName,
+      name: this.state.name,
       number: this.state.number,
     };
 
@@ -35,13 +35,13 @@ class Form extends Component {
   resetForm = () => {
     this.setState({
       id: "",
-      inputName: "",
+      name: "",
       number: "",
     });
   };
 
   render() {
-    const { inputName, number } = this.state;
+    const { name, number } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -50,13 +50,13 @@ class Form extends Component {
         </div>
         <div>
           <input
-            type="name"
-            name="inputValue"
+            type="text"
+            name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             id={this.id}
-            value={inputName}
+            value={name}
             onChange={this.handleInputChange}
           />
         </div>
