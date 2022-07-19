@@ -21,7 +21,7 @@ class App extends Component {
   addContact = (newContact) => {
     // Проверка на дубликат
     const duplicateName = this.state.contacts.find(
-      (contact) => contact.name === newContact.name
+      (contact) => contact.name === newContact.name 
     );
 
     if (duplicateName) {
