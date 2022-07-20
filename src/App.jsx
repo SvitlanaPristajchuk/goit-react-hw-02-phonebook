@@ -21,7 +21,7 @@ class App extends Component {
   addContact = (newContact) => {
     // Проверка на дубликат
     const duplicateName = this.state.contacts.find(
-      (contact) => contact.name === newContact.name 
+      (contact) => contact.name.toLocaleLowerCase() === newContact.name.toLocaleLowerCase()
     );
 
     if (duplicateName) {
@@ -41,7 +41,6 @@ class App extends Component {
 
   filterContacts = () => {
     const { contacts, filter } = this.state;
-
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter((contact) =>
@@ -57,12 +56,13 @@ class App extends Component {
   };
 
   render() {
+    const { filter } = this.state;
     return (
       <>
         <Header title="Phonebook" />
         <Form onSubmit={this.addContact} />
         <Header title="Contacts" />
-        <Filter value={this.filter} onChange={this.changeFilter} />
+        <Filter value={filter} onChange={this.changeFilter} />
         <ContactList
           contacts={this.filterContacts}
           deleteContact={this.deleteContact}

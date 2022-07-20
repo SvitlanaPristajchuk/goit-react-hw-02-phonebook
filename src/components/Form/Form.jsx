@@ -17,15 +17,14 @@ class Form extends Component {
     this.setState({ number: e.currentTarget.value });
   };
 
-  handleAdd = () => {
-    console.log("my hanlerAdd", this);
-  };
+ 
   handleSubmit = (e) => {
     e.preventDefault();
+     const { name, number } = this.state;
     const contact = {
       id: nanoid(),
-      name: this.state.name,
-      number: this.state.number,
+      name: name,
+      number:number,
     };
 
     this.props.onSubmit(contact);
@@ -34,7 +33,6 @@ class Form extends Component {
   };
   resetForm = () => {
     this.setState({
-      id: "",
       name: "",
       number: "",
     });
@@ -90,7 +88,7 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  inputName: PropTypes.string,
+  name: PropTypes.string,
   number: PropTypes.number,
   onSubmit: PropTypes.func.isRequired,
 };
